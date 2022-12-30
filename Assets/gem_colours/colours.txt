@@ -1,0 +1,15 @@
+Level3_0: 1 0 1 FFFFFF
+Level2_1: 1 0.25 1  
+Level2_0: 0.5 0.25 1 E1FFFF
+Level1_3: 1 0.5 1 FFBCBC
+Level1_2: 0.75 0.5 1 E1BCFF
+Level1_1: 0.5 0.5 1  BCFFFF   
+Level1_0: 0.25 0.5 1 E1FFBC
+Level0_7: 1 0.75 1 FF8989
+Level0_6: 0.875 0.75 1 FF89E9
+Level0_5: 0.75 0.75 1 C86CFF
+Level0_4: 0.625 0.75 1 89B1FF
+Level0_3: 0.5 0.75 1 89FFFF       
+Level0_2: 0.375 0.75 1 89FFB1
+Level0_1: 0.25 0.75 1 CFFF89
+Level0_0: 0.125 0.75 1 FFE989
