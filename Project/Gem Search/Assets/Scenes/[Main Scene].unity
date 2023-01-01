@@ -1767,11 +1767,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15100cde9044a435b8537e447c86b8d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  borderWidth: 0
-  spacing: 0
-  percentage: 0
+  spacing: 3
+  percentage: 0.1
   layerName: Terrain
-  prefab: {fileID: 0}
+  prefabs:
+  - {fileID: 2955586187877379643, guid: f6edbceaf0c38425987a4a4f976c30b7, type: 3}
+  - {fileID: 2955586187877379643, guid: 2a4b5abd3c10c4f7eb4864014203b9da, type: 3}
+  - {fileID: 2955586187877379643, guid: fcd32c048cdf24facab90ee6b16760c4, type: 3}
   size: {x: 150, y: 100, z: 150}
 --- !u!4 &391218745
 Transform:
