@@ -26,7 +26,7 @@ public class DistributeItems : MonoBehaviour
 
   private void Distribute()
   {
-    LayerMask lm = LayerMask.NameToLayer(layerName);
+    LayerMask lm = LayerMask.GetMask(layerName);
 
     // Start at position - half size in x and z and plus half size in y
     Vector3 startPosition = transform.position +
@@ -69,6 +69,9 @@ public class DistributeItems : MonoBehaviour
 
   public GameObject NearestItem(Vector3 to)
   {
+    if (generatedItems == null || generatedItems.Length < 1)
+      return null;
+  
     GameObject nearest = generatedItems[0];
     float dist = (nearest.transform.position - to).magnitude;
 
