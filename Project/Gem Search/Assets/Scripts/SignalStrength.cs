@@ -50,12 +50,12 @@ public class SignalStrength : MonoBehaviour
     bulb.enabled = lightOn;
     indicator.localRotation = Quaternion.Euler(0, 0, needleAngle);
 
-    signalStrengthTxt.text = signalStrength.ToString();
-    pointingTowardsTxt.text = pointingTowards.ToString();
-    adjustedSignalStrengthTxt.text = adjustedSignalStrength.ToString();
-    needleAngleTxt.text = needleAngle.ToString();
-    flashRateTxt.text = nextFlash.ToString();
-    lightOnTxt.text = lightOn ? "On" : "Off";
+    signalStrengthTxt.text = "Signal Strength: " + signalStrength.ToString();
+    pointingTowardsTxt.text = "Pointing Towards: " + pointingTowards.ToString();
+    adjustedSignalStrengthTxt.text = "Adjusted Signal Strength: " + adjustedSignalStrength.ToString();
+    needleAngleTxt.text = "Needle Angle: " + needleAngle.ToString();
+    flashRateTxt.text = "Flash Rate: " + nextFlash.ToString();
+    lightOnTxt.text = "Light: " + (lightOn ? "On" : "Off");
   }
 
   private float CalculateNeedleAngle(float signalStrength)

@@ -380,7 +380,7 @@ MonoBehaviour:
   lightOnTxt: {fileID: 1668144981}
   bulb: {fileID: 1236466649}
   indicator: {fileID: 1697932121}
-  maxSignalStrength: 100
+  maxSignalStrength: 120
   minSignalStrength: 2
   lightOn: 0
   lightBusy: 0
