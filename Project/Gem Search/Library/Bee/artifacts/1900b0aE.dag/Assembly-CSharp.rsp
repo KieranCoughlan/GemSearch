@@ -358,6 +358,7 @@
 "Assets/Scripts/DistributeItems.cs"
 "Assets/Scripts/GemDefinition.cs"
 "Assets/Scripts/GemInventory.cs"
+"Assets/Scripts/LightIntensity.cs"
 "Assets/Scripts/ProximitySensor.cs"
 "Assets/Scripts/SignalStrength.cs"
 "Assets/StarterAssets/FirstPersonController/Scripts/BasicRigidBodyPush.cs"
