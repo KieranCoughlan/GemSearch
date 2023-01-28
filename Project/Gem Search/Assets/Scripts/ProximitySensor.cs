@@ -4,100 +4,104 @@ using UnityEngine;
 
 public class ProximitySensor : MonoBehaviour
 {
-  public Light bulb;
-  public AudioSource beep;
-  public Transform needle;
-  public DistributeItems distributor;
-  public GameObject target;
-  public float flashDuration = 0.1f;
-  public float longestDelay = 2.0f;
-  public float shortestDelay = 0.1f;
-  public float maxDetectionRadus = 2;
-  public float minDetectionRadus = 0.5f;
+  public Transform Player;
+  public Transform Target;
+  public Transform NeedlePivot;
+  public DetectorLight DetectorLight;
 
-  private bool isOn = false;
-  private bool aboutToTurnOn = false;
-  private float targetNeedleAngle = 0;
-  private float needleSpeed = 1;
+  public float MaxSignalStrength = 100.0f;
+  public float MinSignalStrength = 1.0f;
+
+  public float LightOnDuration = 0.2f;
+  public float LightOffDurationShort = 0.2f;
+  public float LightOffDurationLong = 5.0f;
+
+  private bool _lightIsOn = false;
+  private float _lastLightChangeTime;
 
   // Start is called before the first frame update
   void Start()
   {
-
+    _lastLightChangeTime = Time.time;
   }
 
   // Update is called once per frame
   void Update()
   {
-    if (bulb != null) 
-      bulb.enabled = isOn;
+    float distance = (Player.position - Target.position).magnitude;
 
-    if (distributor == null)
-      return;
+    float signalStrength = MaxSignalStrength / ((distance * distance) + 0.9f);
+    signalStrength = Mathf.Min(signalStrength, MaxSignalStrength);
 
-    GameObject target = distributor.NearestItem(transform.position);
+    Vector3 playerToTarget = (Target.position - Player.position).normalized;
+    float pointingTowards = Vector3.Dot(playerToTarget, Player.forward);
+    pointingTowards = Mathf.Max(pointingTowards, 0.0f);
 
-    if (target == null)
-      return;
+    float adjustedSignalStrength = signalStrength * pointingTowards;
 
-    Vector3 offsetToTarget = transform.position - target.transform.position;
+    CalculateNeedleAngle(adjustedSignalStrength);
+    CalculateBulbDelay(adjustedSignalStrength);
+  }
 
-    float distanceToTarget = Vector3.Dot(transform.forward, offsetToTarget);
+  private void CalculateNeedleAngle(float adjustedSignalStrength)
+  {
+    float proportion = (adjustedSignalStrength - MinSignalStrength) /
+                       (MaxSignalStrength - MinSignalStrength);
+    proportion = Mathf.Clamp(proportion, 0, 1);
 
-    if (distanceToTarget > 0 && distanceToTarget < maxDetectionRadus)
+    float needleAngle = 180.0f * proportion;
+
+    NeedlePivot.localRotation = Quaternion.Euler(0.0f, 0.0f, needleAngle);
+  }
+
+  private void CalculateBulbDelay(float adjustedSignalStrength)
+  {
+    bool lightShouldBeChanged = false;
+    bool lightShouldBeOn = false;
+
+    if (adjustedSignalStrength <= MinSignalStrength)
     {
-      // Inside radius = determine flash delay and needle angle
-      float distFromMax = maxDetectionRadus - distanceToTarget;
-      float detectInter = maxDetectionRadus - minDetectionRadus;
-      float proportion = Mathf.Min(1.0f, distFromMax / detectInter); // Cap At 1
-      float delayDelta = shortestDelay - longestDelay;
-      float delay = longestDelay + (delayDelta * Mathf.Pow(proportion, 2)); // Square proportion to get nonlinear response
-
-      targetNeedleAngle = proportion * 180.0f;
-
-      if (isOn == false && aboutToTurnOn == false)
-      {
-        aboutToTurnOn = true;
-        Invoke("TurnLightOn", delay);
-      }
+      lightShouldBeChanged = true;
+      lightShouldBeOn = false;
     }
     else
     {
-      targetNeedleAngle = 0;
+      float timeSinceLastChange = Time.time - _lastLightChangeTime;
+
+      if (_lightIsOn && (timeSinceLastChange > LightOnDuration))
+      {
+        lightShouldBeChanged = true;
+        lightShouldBeOn = false;
+      }
+      else if (_lightIsOn == false)
+      {
+        float proportion = (adjustedSignalStrength - MinSignalStrength) /
+                 (MaxSignalStrength - MinSignalStrength);
+        proportion = Mathf.Clamp(proportion, 0, 1);
+        float lightOffDuration = ((LightOffDurationLong - LightOffDurationShort) * (1 - proportion)) + LightOffDurationShort;
+
+        if (timeSinceLastChange >= lightOffDuration)
+        {
+          lightShouldBeChanged = true;
+          lightShouldBeOn = true;
+        }
+      }
     }
 
-    if (needle != null)
+    if (lightShouldBeChanged == true)
     {
-      float actualAngle = Mathf.Lerp(needle.transform.localRotation.eulerAngles.z, targetNeedleAngle, Time.deltaTime * needleSpeed);
-
-      needle.transform.localRotation = Quaternion.Euler(0, 0, actualAngle);
+      if (_lightIsOn == true && (bool)lightShouldBeOn == false)
+      {
+        DetectorLight.TurnOff();
+        _lightIsOn = false;
+        _lastLightChangeTime = Time.time;
+      }
+      else if (_lightIsOn == false && (bool)lightShouldBeOn == true)
+      {
+        DetectorLight.TurnOn();
+        _lightIsOn = true;
+        _lastLightChangeTime = Time.time;
+      }
     }
-  }
-
-  void TurnLightOn()
-  {
-    Invoke("TurnLightOff", flashDuration);
-    aboutToTurnOn = false;
-    isOn = true;
-
-    if (beep != null && beep.isPlaying == false)
-      beep.Play();
-  }
-
-  void TurnLightOff()
-  {
-    isOn = false;
-  }
-
-  private float MapRange(float input, float inputRangeStart, float inputRangeEnd, 
-                                      float outputRangeStart, float outputRangeEnd, int power = 1)
-  {
-    float inputAdjusted = input - inputRangeStart;
-    float inputRange = inputRangeEnd - inputRangeStart;
-    float proportion = Mathf.Clamp(inputAdjusted / inputRange, 0.0f, 1.0f);
-    
-
-
-    return 0.0f;
   }
 }
