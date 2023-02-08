@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ace0e75e18b17242bf94e196fa79ff7, type: 3}
+  m_Name: Picasso Moth
+  m_EditorClassIdentifier: 
+  Level: 0
+  Value: 0
+  Prefab: {fileID: 4985101837460772528, guid: cc876de9b0a0a37448b0b579bc8f0f28, type: 3}
+  Icon: {fileID: 0}

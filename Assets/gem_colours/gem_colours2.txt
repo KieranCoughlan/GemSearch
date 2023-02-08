@@ -1,0 +1,15 @@
+Level3_0: #FF00FF
+Level2_1: #FF40FF
+Level2_0: #8040FF
+Level1_3: #FFFF40
+Level1_2: #C0FF40
+Level1_1: #80FF40
+Level1_0: #40FF40
+Level0_7: #FFFF80
+Level0_6: #D9FF80
+Level0_5: #C0FF80
+Level0_4: #A0FF80
+Level0_3: #80FF80
+Level0_2: #60FF80
+Level0_1: #40FF80
+Level0_0: #20FF80

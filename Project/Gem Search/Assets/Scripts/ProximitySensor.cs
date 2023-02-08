@@ -7,7 +7,7 @@ public class ProximitySensor : MonoBehaviour
   public Transform Player;
   public Transform Target;
   public Transform NeedlePivot;
-  public DetectorLight DetectorLight;
+  public SensorLight DetectorLight;
 
   public float MaxSignalStrength = 100.0f;
   public float MinSignalStrength = 1.0f;

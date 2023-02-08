@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Gem Search/Gem Definition")]
 public class GemDefinition : ScriptableObject
 {
-  public GameObject prefab;
-  public int level;
-  public int value;
-  public Sprite icon;
+    public int Level;
+    public int Value;
+    public GameObject Prefab;
+    public Sprite Icon;
 }

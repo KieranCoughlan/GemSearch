@@ -7,8 +7,7 @@ public class DistributeItems : MonoBehaviour
   public float spacing = 1.0f;
   public float percentage = 1.0f;
   public string layerName;
-  public GameObject[] prefabs;
-  public GameObject[] generatedItems;
+  public GameObject prefab;
   public Vector3 size;
   public GameObject Player;
 
@@ -32,8 +31,6 @@ public class DistributeItems : MonoBehaviour
     Vector3 startPosition = transform.position +
                             new Vector3(-size.x / 2.0f, size.y / 2.0f, -size.z / 2.0f);
 
-    List<GameObject> genItems = new List<GameObject>();
-
     for (float xPos = 0; xPos <= size.x; xPos += spacing)
     {
       for (float zPos = 0; zPos <= size.z; zPos += spacing)
@@ -46,17 +43,13 @@ public class DistributeItems : MonoBehaviour
           if (Random.value < percentage)
           {
             // Spawn a prefab
-            int prefabChoice = Random.Range(0, prefabs.Length);
-            GameObject go = Instantiate(prefabs[prefabChoice], hitInfo.point,
-                                        prefabs[prefabChoice].transform.rotation,
+            GameObject go = Instantiate(prefab, hitInfo.point,
+                                        prefab.transform.rotation,
                                         transform);
-            genItems.Add(go);
           }
         }
       }
     }
-
-    generatedItems = genItems.ToArray();
   }
 
   void OnDrawGizmos()
@@ -69,15 +62,15 @@ public class DistributeItems : MonoBehaviour
 
   public GameObject NearestItem(Vector3 to)
   {
-    if (generatedItems == null || generatedItems.Length < 1)
+    if (transform.childCount < 1)
       return null;
   
-    GameObject nearest = generatedItems[0];
+    GameObject nearest = transform.GetChild(0).gameObject;
     float dist = (nearest.transform.position - to).magnitude;
 
-    for (int i = 1; i < generatedItems.Length; i++)
+    for (int i = 1; i < transform.childCount; i++)
     {
-      GameObject thisItem = generatedItems[i];
+      GameObject thisItem = transform.GetChild(i).gameObject;
       float thisDist = (thisItem.transform.position - to).magnitude;
 
       if (thisDist < dist)
@@ -97,16 +90,16 @@ public class DistributeItems : MonoBehaviour
 
     GameObject nearest = NearestItem(Player.transform.position);
 
-    for (int i = 0; i < generatedItems.Length; i++)
+    for (int i = 0; i < transform.childCount; i++)
     {
-      SetIndicator(generatedItems[i], generatedItems[i] == nearest);
+      SetIndicator(transform.GetChild(i).gameObject, transform.GetChild(i).gameObject == nearest);
     }
   }
 
   private void SetIndicator(GameObject go, bool isNearest)
   {
-    Transform indicator = go.transform.Find("ClosestIndicator");
-    if (indicator != null)
-      indicator.gameObject.SetActive(isNearest);
+    //go.transform.Find("ClosestIndicator");
+    //if (indicator != null)
+    //  indicator.gameObject.SetActive(isNearest);
   }
 }
