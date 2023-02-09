@@ -360,6 +360,7 @@
 "Assets/Scripts/GemDefinition.cs"
 "Assets/Scripts/GemInventory.cs"
 "Assets/Scripts/GemManager.cs"
+"Assets/Scripts/GemScreenshots.cs"
 "Assets/Scripts/ItemScatterer.cs"
 "Assets/Scripts/LampPost.cs"
 "Assets/Scripts/LightIntensity.cs"
