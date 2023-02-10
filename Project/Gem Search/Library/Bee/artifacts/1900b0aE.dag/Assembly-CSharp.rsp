@@ -358,6 +358,7 @@
 "Assets/Scripts/DetectorLight.cs"
 "Assets/Scripts/DistributeItems.cs"
 "Assets/Scripts/GemDefinition.cs"
+"Assets/Scripts/GemFoundMessage.cs"
 "Assets/Scripts/GemInventory.cs"
 "Assets/Scripts/GemManager.cs"
 "Assets/Scripts/GemScreenshots.cs"

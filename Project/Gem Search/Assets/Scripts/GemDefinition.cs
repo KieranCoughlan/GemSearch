@@ -8,5 +8,5 @@ public class GemDefinition : ScriptableObject
     public int Level;
     public int Value;
     public GameObject Prefab;
-    public Sprite Icon;
+    public Texture2D Icon;
 }
