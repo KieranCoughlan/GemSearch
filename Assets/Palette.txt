@@ -1,0 +1,20 @@
+Borders:
+deae00 (H33 S255 L111)
+b08900 (H33 S255 L88)
+7a5f00 (H33 S255 L61)
+
+Fill:
+7a5f00 (H33 S255 L220)
+
+Compliment:
+deae00 / 0030DE
+b08900 / 0027B0
+7a5f00 / 001B7A
+ffefb9 / B9C9FF
+
+Possible pallete:
+DEAE00 - Goldenrod
+EBA6A9 - Cherry Blossom Pink
+F40076 - Rose
+FFEFB9 - Vanilla
+0030DE - Palatinate Blue

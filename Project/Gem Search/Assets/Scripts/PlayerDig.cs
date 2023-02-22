@@ -34,7 +34,7 @@ public class PlayerDig : MonoBehaviour
     RaycastHit hitInfo = new RaycastHit();
     if (Physics.Raycast(rayPos, Vector3.down, out hitInfo, 10.0f, lm))
     {
-      Instantiate(DiggingPrefab, hitInfo.point, Quaternion.identity);
+      Instantiate(DiggingPrefab, hitInfo.point, DiggingPrefab.transform.rotation);
       Invoke("DigResult", 3);
     }
   }

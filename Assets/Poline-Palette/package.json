@@ -1,0 +1,15 @@
+{
+  "name": "poline-palette",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "culori": "^2.1.1",
+    "poline": "^0.5.2"
+  }
+}
