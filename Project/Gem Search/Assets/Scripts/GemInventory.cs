@@ -1,56 +1,97 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GemInventory : MonoBehaviour
 {
-  public GemDefinition[] InventoryItems;
-  public int[] InventoryCounts;
+    public InventorySlot[] InventorySlots;
 
-  private Dictionary<GemDefinition, int> _inventory;
+    private Dictionary<GemDefinition, int> _storage;
+    private List<GemDefinition> _craftingInput;
+    private List<GemDefinition> _sensor;
+    private GemDefinition _craftingOutput;
 
-  // Start is called before the first frame update
-  void Start()
-  {
-    _inventory = new Dictionary<GemDefinition, int>();
-  }
-
-  public void Add(GemDefinition gd)
-  {
-    if (_inventory.ContainsKey(gd))
+    // Start is called before the first frame update
+    void Start()
     {
-      _inventory[gd] = _inventory[gd] + 1;
-    }
-    else
-    {
-      _inventory.Add(gd, 1);
-    }
-    
-    UpdatePublicArrays();
-  }
+        _storage = new Dictionary<GemDefinition, int>();
+        _craftingInput = new List<GemDefinition>();
+        _sensor = new List<GemDefinition>();
+        _craftingOutput = null;
 
-  public void Remove(GemDefinition gd)
-  {
-    if (_inventory.ContainsKey(gd) && _inventory[gd] > 0)
-    {
-      _inventory[gd] = _inventory[gd] - 1;
-      UpdatePublicArrays();
-    }
-  }
-
-  private void UpdatePublicArrays()
-  {
-    List<GemDefinition> gemDefs = new List<GemDefinition>();
-    List<int> gemCounts = new List<int>();
-
-    foreach (var kvp in _inventory)
-    {
-      gemDefs.Add(kvp.Key);
-      gemCounts.Add(kvp.Value);
+        RegisterInventorySlots();
     }
 
-    InventoryItems = gemDefs.ToArray();
-    InventoryCounts = gemCounts.ToArray();
-  }
+    private void RegisterInventorySlots()
+    {
+        foreach(var slot in InventorySlots)
+        {
+            slot.SetInventory(this);
+        }
+    }
 
+    public void Add(GemDefinition gd)
+    {
+        if (_storage.ContainsKey(gd))
+        {
+            _storage[gd] = _storage[gd] + 1;
+        }
+        else
+        {
+            _storage.Add(gd, 1);
+        }
+
+        UpdatePublicArrays();
+    }
+
+    public void Remove(GemDefinition gd)
+    {
+        if (_storage.ContainsKey(gd) && _storage[gd] > 0)
+        {
+            _storage[gd] = _storage[gd] - 1;
+            UpdatePublicArrays();
+        }
+    }
+
+    private void UpdatePublicArrays()
+    {
+        List<GemDefinition> gemDefs = new List<GemDefinition>();
+        List<int> gemCounts = new List<int>();
+
+        foreach (var kvp in _storage)
+        {
+            gemDefs.Add(kvp.Key);
+            gemCounts.Add(kvp.Value);
+        }
+
+        InventoryItems = gemDefs.ToArray();
+        InventoryCounts = gemCounts.ToArray();
+    }
+
+    public void MoveFromInventoryToCraftingInput(GemDefinition gd)
+    {
+
+    }
+
+    public void MoveFromInventoryToSensor(GemDefinition gd)
+    {
+
+    }
+
+    public void MoveFromCraftingInputToInventory(GemDefinition gd)
+    {
+
+    }
+
+    public void MoveFromCraftingOutputToInventory(GemDefinition gd)
+    {
+
+    }
+
+    public void MoveFromCraftingToSensor(GemDefinition gd)
+    {
+
+    }
 }
