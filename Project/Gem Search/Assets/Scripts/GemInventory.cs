@@ -42,8 +42,6 @@ public class GemInventory : MonoBehaviour
         {
             _storage.Add(gd, 1);
         }
-
-        UpdatePublicArrays();
     }
 
     public void Remove(GemDefinition gd)
@@ -51,23 +49,7 @@ public class GemInventory : MonoBehaviour
         if (_storage.ContainsKey(gd) && _storage[gd] > 0)
         {
             _storage[gd] = _storage[gd] - 1;
-            UpdatePublicArrays();
         }
-    }
-
-    private void UpdatePublicArrays()
-    {
-        List<GemDefinition> gemDefs = new List<GemDefinition>();
-        List<int> gemCounts = new List<int>();
-
-        foreach (var kvp in _storage)
-        {
-            gemDefs.Add(kvp.Key);
-            gemCounts.Add(kvp.Value);
-        }
-
-        InventoryItems = gemDefs.ToArray();
-        InventoryCounts = gemCounts.ToArray();
     }
 
     public void MoveFromInventoryToCraftingInput(GemDefinition gd)

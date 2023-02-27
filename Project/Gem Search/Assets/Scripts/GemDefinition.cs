@@ -10,6 +10,8 @@ public class GemDefinition : ScriptableObject
   public GameObject Prefab;
   public Texture2D Icon;
 
+  private Sprite _sprite;
+
   public Sprite Sprite
   {
     get 
@@ -22,6 +24,4 @@ public class GemDefinition : ScriptableObject
       return _sprite;
     }
   }
-  
-  private Sprite _sprite;
 }
