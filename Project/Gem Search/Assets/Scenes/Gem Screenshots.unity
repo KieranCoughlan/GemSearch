@@ -622,7 +622,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875515110}
-  m_LocalRotation: {x: 0.044214047, y: -0.13841578, z: -0.30105308, w: 0.94247186}
+  m_LocalRotation: {x: 0.17560166, y: -0.2710459, z: -0.28102985, w: 0.90372586}
   m_LocalPosition: {x: 0, y: 1.69, z: -4.28}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 0
@@ -643,18 +643,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gems:
-  - {fileID: 8248815333832531990, guid: 4f990563f3b89ed4a926ff1497f995b3, type: 3}
-  - {fileID: 3146349201621894572, guid: 05c96a8163c41e34481820d2bdebd13f, type: 3}
+  - {fileID: 6686257050336583476, guid: 349c3c99f48322f4d9f17454920b1b81, type: 3}
   - {fileID: 19226849565983794, guid: 2657ce8ea981e7148abbf9630a12ac62, type: 3}
-  - {fileID: 7042318148799093689, guid: 6054e1f30fc2f764abf967da020e0d83, type: 3}
+  - {fileID: 3146349201621894572, guid: 05c96a8163c41e34481820d2bdebd13f, type: 3}
+  - {fileID: 4985101837460772528, guid: cc876de9b0a0a37448b0b579bc8f0f28, type: 3}
   - {fileID: 3409692836699431091, guid: e19a23fabd1fb024bbdd9e1ec4603f5e, type: 3}
-  - {fileID: 478706278931621087, guid: 81f8cc388c0054a4f8f77196aa0e23c9, type: 3}
-  - {fileID: 2412544161240907140, guid: 374e79e0a48e75c44a3faedbfd89d09c, type: 3}
+  - {fileID: 7042318148799093689, guid: 6054e1f30fc2f764abf967da020e0d83, type: 3}
+  - {fileID: 8093193836051675931, guid: c5240249796f53a458265df806eebe42, type: 3}
   - {fileID: 4985101837460772528, guid: cc876de9b0a0a37448b0b579bc8f0f28, type: 3}
   - {fileID: 6642503525104490909, guid: ef224a4c514494640b5337d4115f35be, type: 3}
-  - {fileID: 8903598517050187603, guid: 4bed02974d438e14684f7ca9156eda7b, type: 3}
+  - {fileID: 2412544161240907140, guid: 374e79e0a48e75c44a3faedbfd89d09c, type: 3}
   - {fileID: 2252300316910445144, guid: 227f160f9a67a714c97b54aac8097ec8, type: 3}
-  - {fileID: 6686257050336583476, guid: 349c3c99f48322f4d9f17454920b1b81, type: 3}
   - {fileID: 4165391437793007917, guid: 2d9fb3bd7b051f241a17410fcd898119, type: 3}
+  - {fileID: 8903598517050187603, guid: 4bed02974d438e14684f7ca9156eda7b, type: 3}
+  - {fileID: 8248815333832531990, guid: 4f990563f3b89ed4a926ff1497f995b3, type: 3}
   - {fileID: 1285020731391956255, guid: cc1b236494c603d4c93a870a452425db, type: 3}
-  - {fileID: 8093193836051675931, guid: c5240249796f53a458265df806eebe42, type: 3}
+  - {fileID: 478706278931621087, guid: 81f8cc388c0054a4f8f77196aa0e23c9, type: 3}

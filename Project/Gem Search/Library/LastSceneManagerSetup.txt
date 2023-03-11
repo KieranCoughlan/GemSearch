@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/UI Test - Styled.unity
+- path: Assets/Scenes/Gem Screenshots.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

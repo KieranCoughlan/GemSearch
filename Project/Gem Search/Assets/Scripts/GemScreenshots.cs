@@ -27,14 +27,17 @@ public class GemScreenshots : MonoBehaviour
       Object.Destroy(lastSpawned);
 
     lastSpawned = GameObject.Instantiate(Gems[currentIndex], transform);
-    TakeScreenshot(Gems[currentIndex].name);
 
+    Invoke("TakeScreenshot", 1);
+    
     if (currentIndex < Gems.Length - 1)
-      Invoke("DoNextGem", 2.0f);
+      Invoke("DoNextGem", 3.0f);
   }
 
-  private void TakeScreenshot(string name)
+  private void TakeScreenshot()
   {
+    string name = Gems[currentIndex].name;
+  
     RenderTexture renderTexture = new RenderTexture(256, 256, 24);
     mainCamera.targetTexture = renderTexture;
     Texture2D screenshot = new Texture2D(256, 256, TextureFormat.RGB24, false);
