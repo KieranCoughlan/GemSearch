@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c208e14605133274490129821d3ea690, type: 3}
+  m_Name: Raven Recipe
+  m_EditorClassIdentifier: 
+  Input0: {fileID: 11400000, guid: 1f180966d2e73da4aa5b94f1d0e90c4f, type: 2}
+  Input1: {fileID: 11400000, guid: 6282e2b7ed19ce040afdf934725bc877, type: 2}
+  Input2: {fileID: 11400000, guid: d7081c5e7e6ac184984bf6dc996f1162, type: 2}
+  Output: {fileID: 11400000, guid: 7fbaed989800e774e86c8f6ae3cee29b, type: 2}

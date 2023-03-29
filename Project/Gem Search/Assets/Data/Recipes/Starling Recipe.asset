@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c208e14605133274490129821d3ea690, type: 3}
+  m_Name: Starling Recipe
+  m_EditorClassIdentifier: 
+  Input0: {fileID: 11400000, guid: d7081c5e7e6ac184984bf6dc996f1162, type: 2}
+  Input1: {fileID: 11400000, guid: 260b73fba66158c489d5285bf5b90bb0, type: 2}
+  Input2: {fileID: 11400000, guid: 3287e14794334254e96fe07a811270b2, type: 2}
+  Output: {fileID: 11400000, guid: c39867faf68b4d3429c9ae7772c80a1c, type: 2}

@@ -7,9 +7,6 @@ using TMPro;
 
 public class InventorySlot : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
-  public enum InventorySlotType { Storage, CraftingInput, CraftingOutput, Sensor }
-
-  public InventorySlotType Type;
   public GemDefinition GemDefinition;
   public int GemCount;
 
@@ -25,17 +22,7 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
   private GemInventory _gemInventory;
 
-  public void SetDetails(GemDefinition gd, InventorySlotType type)
-  {
-    SetDetails(gd, 1, type);
-  }
-
-  public void SetDetails(GemDefinition gd, int count, InventorySlotType type)
-  {
-    GemDefinition = gd;
-    GemCount = gd == null ? 0 : count;
-    Type = type;
-  }
+  private GemInventoryArea.GemInventoryAreaType _type;
 
   // Start is called before the first frame update
   void Start()
@@ -57,6 +44,12 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     CountTextBadge.SetActive(GemDefinition != null && GemCount > 1);
     CountText.text = GemCount.ToString();
+  }
+
+  public void RegisterWithInventory(GemInventory inventory, GemInventoryArea.GemInventoryAreaType type)
+  {
+    _gemInventory = inventory;
+    _type = type;
   }
 
   public void OnBeginDrag(PointerEventData eventData)
@@ -108,24 +101,7 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
       if (fromSlot != null && fromSlot._isDragging)
       {
-        if (fromSlot.Type == InventorySlotType.Storage && Type == InventorySlotType.CraftingInput)
-          _gemInventory.StorageToCraftingIn(fromSlot.GemDefinition);
-        else if (fromSlot.Type == InventorySlotType.Storage && Type == InventorySlotType.Sensor)
-          _gemInventory.StorageToSensor(fromSlot.GemDefinition);
-        else if (fromSlot.Type == InventorySlotType.CraftingInput && Type == InventorySlotType.Storage)
-          _gemInventory.CraftingInToStorage(fromSlot.GemDefinition);
-        else if (fromSlot.Type == InventorySlotType.CraftingInput && Type == InventorySlotType.Sensor)
-          _gemInventory.CraftingInToSensor(fromSlot.GemDefinition);
-        else if (fromSlot.Type == InventorySlotType.CraftingOutput && Type == InventorySlotType.Storage)
-          _gemInventory.CraftingOutToStorage(fromSlot.GemDefinition);
-        else if (fromSlot.Type == InventorySlotType.CraftingOutput && Type == InventorySlotType.CraftingInput)
-          _gemInventory.CraftingOutToCraftingIn(fromSlot.GemDefinition);
-        else if (fromSlot.Type == InventorySlotType.CraftingOutput && Type == InventorySlotType.Sensor)
-          _gemInventory.CraftingOutToSensor(fromSlot.GemDefinition);
-        else if (fromSlot.Type == InventorySlotType.Sensor && Type == InventorySlotType.Storage)
-          _gemInventory.SensorToStorage(fromSlot.GemDefinition);
-        else if (fromSlot.Type == InventorySlotType.Sensor && Type == InventorySlotType.CraftingInput)
-          _gemInventory.SensorToCraftingIn(fromSlot.GemDefinition);
+        _gemInventory.DragBetween(fromSlot._type, _type, fromSlot.GemDefinition);
       }
     }
   }
@@ -138,8 +114,9 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     }
   }
 
-  public void SetInventory(GemInventory gi)
+  public void SetDetails(GemDefinition gd, int count)
   {
-    _gemInventory = gi;
+    GemDefinition = gd;
+    GemCount = gd == null ? 0 : count;
   }
 }

@@ -28,16 +28,21 @@ public class ProximitySensor : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    float distance = (Player.position - Target.position).magnitude;
+    float adjustedSignalStrength = 0.0f;
 
-    float signalStrength = MaxSignalStrength / ((distance * distance) + 0.9f);
-    signalStrength = Mathf.Min(signalStrength, MaxSignalStrength);
+    if (Target != null)
+    {
+      float distance = (Player.position - Target.position).magnitude;
 
-    Vector3 playerToTarget = (Target.position - Player.position).normalized;
-    float pointingTowards = Vector3.Dot(playerToTarget, Player.forward);
-    pointingTowards = Mathf.Max(pointingTowards, 0.0f);
+      float signalStrength = MaxSignalStrength / ((distance * distance) + 0.9f);
+      signalStrength = Mathf.Min(signalStrength, MaxSignalStrength);
 
-    float adjustedSignalStrength = signalStrength * pointingTowards;
+      Vector3 playerToTarget = (Target.position - Player.position).normalized;
+      float pointingTowards = Vector3.Dot(playerToTarget, Player.forward);
+      pointingTowards = Mathf.Max(pointingTowards, 0.0f);
+
+      adjustedSignalStrength = signalStrength * pointingTowards;
+    }
 
     CalculateNeedleAngle(adjustedSignalStrength);
     CalculateBulbDelay(adjustedSignalStrength);

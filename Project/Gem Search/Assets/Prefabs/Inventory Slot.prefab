@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 550069091947209968}
   - component: {fileID: 550069091947209743}
   - component: {fileID: 1950264407}
+  - component: {fileID: 3670897892552052285}
   m_Layer: 5
   m_Name: Inventory Slot
   m_TagString: Untagged
@@ -146,7 +147,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -154,7 +155,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.01
 --- !u!114 &1950264407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +170,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 3
   m_AspectRatio: 1
+--- !u!114 &3670897892552052285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550069091947209741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b01d5e24444894ca279d4073a8d321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GemDefinition: {fileID: 0}
+  GemCount: 0
+  SlotImage: {fileID: 550069091228994163}
+  CountTextBadge: {fileID: 550069092965440261}
+  CountText: {fileID: 550069092807120977}
+  DragIconSize: {x: 40, y: 40}
 --- !u!1 &550069092807121007
 GameObject:
   m_ObjectHideFlags: 0

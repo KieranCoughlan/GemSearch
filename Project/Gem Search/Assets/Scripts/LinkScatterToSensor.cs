@@ -10,10 +10,6 @@ public class LinkScatterToSensor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ItemScatter.nearestItem != null)
-        {
-            ProximitySensor.Target = ItemScatter.nearestItem.transform;
-        }
-
+        ProximitySensor.Target = ItemScatter.nearestItem != null ? ItemScatter.nearestItem.transform : null;
     }
 }
